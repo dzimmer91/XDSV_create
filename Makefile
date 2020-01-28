@@ -774,7 +774,7 @@ compiler_moc_source_clean:
 compiler_uic_make_all: include/ui_mainwindow.h
 compiler_uic_clean:
 	-$(DEL_FILE) include/ui_mainwindow.h
-ui_mainwindow.h: mainwindow.ui \
+include/ui_mainwindow.h: mainwindow.ui \
 		../../../Qt/5.12.3/gcc_64/bin/uic
 	/home/Qt/5.12.3/gcc_64/bin/uic mainwindow.ui -o include/ui_mainwindow.h
 
