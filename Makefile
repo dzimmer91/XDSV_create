@@ -654,7 +654,7 @@ moc_predefs.h: ../../../Qt/5.12.3/gcc_64/mkspecs/features/data/dummy.cpp
 compiler_moc_header_make_all: src/moc_mainwindow.cpp
 compiler_moc_header_clean:
 	-$(DEL_FILE) src/moc_mainwindow.cpp
-moc_mainwindow.cpp: include/mainwindow.h \
+src/moc_mainwindow.cpp: include/mainwindow.h \
 		../../../Qt/5.12.3/gcc_64/include/QtWidgets/QMainWindow \
 		../../../Qt/5.12.3/gcc_64/include/QtWidgets/qmainwindow.h \
 		../../../Qt/5.12.3/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
