@@ -618,7 +618,7 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../Qt/5.12.3/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents include/mainwindow.h include/file_parse.h $(DISTDIR)/
-	$(COPY_FILE) --parents src/main.cpp file_parse.cpp mainwindow.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents src/main.cpp src/file_parse.cpp src/mainwindow.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents mainwindow.ui $(DISTDIR)/
 
 
@@ -651,9 +651,9 @@ compiler_moc_predefs_clean:
 moc_predefs.h: ../../../Qt/5.12.3/gcc_64/mkspecs/features/data/dummy.cpp
 	g++ -pipe -g -std=gnu++11 -Wall -W -dM -E -o moc_predefs.h ../../../Qt/5.12.3/gcc_64/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_mainwindow.cpp
+compiler_moc_header_make_all: src/moc_mainwindow.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_mainwindow.cpp
+	-$(DEL_FILE) src/moc_mainwindow.cpp
 moc_mainwindow.cpp: include/mainwindow.h \
 		../../../Qt/5.12.3/gcc_64/include/QtWidgets/QMainWindow \
 		../../../Qt/5.12.3/gcc_64/include/QtWidgets/qmainwindow.h \
@@ -765,7 +765,7 @@ moc_mainwindow.cpp: include/mainwindow.h \
 		include/file_parse.h \
 		include/moc_predefs.h \
 		../../../Qt/5.12.3/gcc_64/bin/moc
-	/home/Qt/5.12.3/gcc_64/bin/moc $(DEFINES) --include /home/NLM/Qt/spsat_file/moc_predefs.h -I/home/Qt/5.12.3/gcc_64/mkspecs/linux-g++ -I/home/NLM/Qt/spsat_file -I/home/Qt/5.12.3/gcc_64/include -I/home/Qt/5.12.3/gcc_64/include/QtWidgets -I/home/Qt/5.12.3/gcc_64/include/QtGui -I/home/Qt/5.12.3/gcc_64/include/QtCore -I/usr/include/c++/4.8.5 -I/usr/include/c++/4.8.5/x86_64-redhat-linux -I/usr/include/c++/4.8.5/backward -I/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include -I/usr/local/include -I/usr/include include/mainwindow.h -o moc_mainwindow.cpp
+	/home/Qt/5.12.3/gcc_64/bin/moc $(DEFINES) --include /home/NLM/Qt/spsat_file/moc_predefs.h -I/home/Qt/5.12.3/gcc_64/mkspecs/linux-g++ -I/home/NLM/Qt/spsat_file -I/home/Qt/5.12.3/gcc_64/include -I/home/Qt/5.12.3/gcc_64/include/QtWidgets -I/home/Qt/5.12.3/gcc_64/include/QtGui -I/home/Qt/5.12.3/gcc_64/include/QtCore -I/usr/include/c++/4.8.5 -I/usr/include/c++/4.8.5/x86_64-redhat-linux -I/usr/include/c++/4.8.5/backward -I/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include -I/usr/local/include -I/usr/include include/mainwindow.h -o src/moc_mainwindow.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -1247,10 +1247,10 @@ mainwindow.o: src/mainwindow.cpp include/mainwindow.h \
 		../../../Qt/5.12.3/gcc_64/include/QtWidgets/qdialog.h \
 		../../../Qt/5.12.3/gcc_64/include/QtWidgets/QMessageBox \
 		../../../Qt/5.12.3/gcc_64/include/QtWidgets/qmessagebox.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o mainwindow.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o src/mainwindow.cpp
 
-moc_mainwindow.o: moc_mainwindow.cpp
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
+moc_mainwindow.o: src/moc_mainwindow.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o src/moc_mainwindow.cpp
 
 ####### Install
 
