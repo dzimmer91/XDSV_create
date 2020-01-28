@@ -654,7 +654,7 @@ moc_predefs.h: ../../../Qt/5.12.3/gcc_64/mkspecs/features/data/dummy.cpp
 compiler_moc_header_make_all: moc_mainwindow.cpp
 compiler_moc_header_clean:
 	-$(DEL_FILE) moc_mainwindow.cpp
-moc_mainwindow.cpp: mainwindow.h \
+moc_mainwindow.cpp: include/mainwindow.h \
 		../../../Qt/5.12.3/gcc_64/include/QtWidgets/QMainWindow \
 		../../../Qt/5.12.3/gcc_64/include/QtWidgets/qmainwindow.h \
 		../../../Qt/5.12.3/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
@@ -761,22 +761,22 @@ moc_mainwindow.cpp: mainwindow.h \
 		../../../Qt/5.12.3/gcc_64/include/QtGui/qtouchdevice.h \
 		../../../Qt/5.12.3/gcc_64/include/QtWidgets/qtabwidget.h \
 		../../../Qt/5.12.3/gcc_64/include/QtGui/qicon.h \
-		ui_mainwindow.h \
-		file_parse.h \
-		moc_predefs.h \
+		include/ui_mainwindow.h \
+		include/file_parse.h \
+		include/moc_predefs.h \
 		../../../Qt/5.12.3/gcc_64/bin/moc
-	/home/Qt/5.12.3/gcc_64/bin/moc $(DEFINES) --include /home/NLM/Qt/spsat_file/moc_predefs.h -I/home/Qt/5.12.3/gcc_64/mkspecs/linux-g++ -I/home/NLM/Qt/spsat_file -I/home/Qt/5.12.3/gcc_64/include -I/home/Qt/5.12.3/gcc_64/include/QtWidgets -I/home/Qt/5.12.3/gcc_64/include/QtGui -I/home/Qt/5.12.3/gcc_64/include/QtCore -I/usr/include/c++/4.8.5 -I/usr/include/c++/4.8.5/x86_64-redhat-linux -I/usr/include/c++/4.8.5/backward -I/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include -I/usr/local/include -I/usr/include mainwindow.h -o moc_mainwindow.cpp
+	/home/Qt/5.12.3/gcc_64/bin/moc $(DEFINES) --include /home/NLM/Qt/spsat_file/moc_predefs.h -I/home/Qt/5.12.3/gcc_64/mkspecs/linux-g++ -I/home/NLM/Qt/spsat_file -I/home/Qt/5.12.3/gcc_64/include -I/home/Qt/5.12.3/gcc_64/include/QtWidgets -I/home/Qt/5.12.3/gcc_64/include/QtGui -I/home/Qt/5.12.3/gcc_64/include/QtCore -I/usr/include/c++/4.8.5 -I/usr/include/c++/4.8.5/x86_64-redhat-linux -I/usr/include/c++/4.8.5/backward -I/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include -I/usr/local/include -I/usr/include include/mainwindow.h -o moc_mainwindow.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_mainwindow.h
+compiler_uic_make_all: include/ui_mainwindow.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_mainwindow.h
+	-$(DEL_FILE) include/ui_mainwindow.h
 ui_mainwindow.h: mainwindow.ui \
 		../../../Qt/5.12.3/gcc_64/bin/uic
-	/home/Qt/5.12.3/gcc_64/bin/uic mainwindow.ui -o ui_mainwindow.h
+	/home/Qt/5.12.3/gcc_64/bin/uic mainwindow.ui -o include/ui_mainwindow.h
 
 compiler_yacc_decl_make_all:
 compiler_yacc_decl_clean:
@@ -788,7 +788,7 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_ui
 
 ####### Compile
 
-main.o: src/main.cpp mainwindow.h \
+main.o: src/main.cpp include/mainwindow.h \
 		../../../Qt/5.12.3/gcc_64/include/QtWidgets/QMainWindow \
 		../../../Qt/5.12.3/gcc_64/include/QtWidgets/qmainwindow.h \
 		../../../Qt/5.12.3/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
@@ -895,8 +895,8 @@ main.o: src/main.cpp mainwindow.h \
 		../../../Qt/5.12.3/gcc_64/include/QtGui/qtouchdevice.h \
 		../../../Qt/5.12.3/gcc_64/include/QtWidgets/qtabwidget.h \
 		../../../Qt/5.12.3/gcc_64/include/QtGui/qicon.h \
-		ui_mainwindow.h \
-		file_parse.h \
+		include/ui_mainwindow.h \
+		include/file_parse.h \
 		../../../Qt/5.12.3/gcc_64/include/QtWidgets/QApplication \
 		../../../Qt/5.12.3/gcc_64/include/QtWidgets/qapplication.h \
 		../../../Qt/5.12.3/gcc_64/include/QtCore/qcoreapplication.h \
@@ -906,10 +906,10 @@ main.o: src/main.cpp mainwindow.h \
 		../../../Qt/5.12.3/gcc_64/include/QtGui/qinputmethod.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o src/main.cpp
 
-file_parse.o: file_parse.cpp file_parse.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o file_parse.o file_parse.cpp
+file_parse.o: src/file_parse.cpp include/file_parse.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o file_parse.o src/file_parse.cpp
 
-mainwindow.o: mainwindow.cpp mainwindow.h \
+mainwindow.o: src/mainwindow.cpp include/mainwindow.h \
 		../../../Qt/5.12.3/gcc_64/include/QtWidgets/QMainWindow \
 		../../../Qt/5.12.3/gcc_64/include/QtWidgets/qmainwindow.h \
 		../../../Qt/5.12.3/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
@@ -1016,8 +1016,8 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		../../../Qt/5.12.3/gcc_64/include/QtGui/qtouchdevice.h \
 		../../../Qt/5.12.3/gcc_64/include/QtWidgets/qtabwidget.h \
 		../../../Qt/5.12.3/gcc_64/include/QtGui/qicon.h \
-		ui_mainwindow.h \
-		file_parse.h \
+		include/ui_mainwindow.h \
+		include/file_parse.h \
 		../../../Qt/5.12.3/gcc_64/include/QtGui/QtGui \
 		../../../Qt/5.12.3/gcc_64/include/QtGui/QtGuiDepends \
 		../../../Qt/5.12.3/gcc_64/include/QtCore/QtCore \
