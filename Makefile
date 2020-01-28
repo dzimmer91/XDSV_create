@@ -52,9 +52,9 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = main.cpp \
-		file_parse.cpp \
-		mainwindow.cpp moc_mainwindow.cpp
+SOURCES       = src/main.cpp \
+		src/file_parse.cpp \
+		src/mainwindow.cpp src/moc_mainwindow.cpp
 OBJECTS       = main.o \
 		file_parse.o \
 		mainwindow.o \
@@ -232,10 +232,10 @@ DIST          = ../../../Qt/5.12.3/gcc_64/mkspecs/features/spec_pre.prf \
 		../../../Qt/5.12.3/gcc_64/mkspecs/features/exceptions.prf \
 		../../../Qt/5.12.3/gcc_64/mkspecs/features/yacc.prf \
 		../../../Qt/5.12.3/gcc_64/mkspecs/features/lex.prf \
-		spsat_file.pro mainwindow.h \
-		file_parse.h main.cpp \
-		file_parse.cpp \
-		mainwindow.cpp
+		spsat_file.pro include/mainwindow.h \
+		include/file_parse.h src/main.cpp \
+		src/file_parse.cpp \
+		src/mainwindow.cpp
 QMAKE_TARGET  = spsat_file
 DESTDIR       =
 TARGET        = spsat_file
@@ -244,7 +244,7 @@ TARGET        = spsat_file
 first: all
 ####### Build rules
 
-spsat_file: ui_mainwindow.h $(OBJECTS)
+spsat_file: include/ui_mainwindow.h $(OBJECTS)
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
 Makefile: spsat_file.pro ../../../Qt/5.12.3/gcc_64/mkspecs/linux-g++/qmake.conf ../../../Qt/5.12.3/gcc_64/mkspecs/features/spec_pre.prf \
@@ -617,7 +617,7 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../Qt/5.12.3/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents mainwindow.h file_parse.h $(DISTDIR)/
+	$(COPY_FILE) --parents include/mainwindow.h include/file_parse.h $(DISTDIR)/
 	$(COPY_FILE) --parents main.cpp file_parse.cpp mainwindow.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents mainwindow.ui $(DISTDIR)/
 
