@@ -618,7 +618,7 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../Qt/5.12.3/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents include/mainwindow.h include/file_parse.h $(DISTDIR)/
-	$(COPY_FILE) --parents main.cpp file_parse.cpp mainwindow.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents src/main.cpp file_parse.cpp mainwindow.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents mainwindow.ui $(DISTDIR)/
 
 
@@ -788,7 +788,7 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_ui
 
 ####### Compile
 
-main.o: main.cpp mainwindow.h \
+main.o: src/main.cpp mainwindow.h \
 		../../../Qt/5.12.3/gcc_64/include/QtWidgets/QMainWindow \
 		../../../Qt/5.12.3/gcc_64/include/QtWidgets/qmainwindow.h \
 		../../../Qt/5.12.3/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
@@ -904,7 +904,7 @@ main.o: main.cpp mainwindow.h \
 		../../../Qt/5.12.3/gcc_64/include/QtWidgets/qdesktopwidget.h \
 		../../../Qt/5.12.3/gcc_64/include/QtGui/qguiapplication.h \
 		../../../Qt/5.12.3/gcc_64/include/QtGui/qinputmethod.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o src/main.cpp
 
 file_parse.o: file_parse.cpp file_parse.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o file_parse.o file_parse.cpp
