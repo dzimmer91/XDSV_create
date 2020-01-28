@@ -12,11 +12,11 @@ TARGET = spsat_file
 TEMPLATE = app
 
 
-SOURCES += main.cpp\
-    file_parse.cpp \
-        mainwindow.cpp
+SOURCES += src/main.cpp\
+    src/file_parse.cpp \
+        src/mainwindow.cpp
 
-HEADERS  += mainwindow.h \
-    file_parse.h
+HEADERS  += include/mainwindow.h \
+    include/file_parse.h
 
 FORMS    += mainwindow.ui

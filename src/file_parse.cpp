@@ -35,7 +35,7 @@ Parser::Parser(char *fileloc)
 
     }
 
-  } 
+  }
   commentflag=false;
   delimiter='\0';
   numVars=0;
@@ -45,7 +45,7 @@ Parser::Parser(char *fileloc)
 int Parser::getnumlines()
 {
 
-  int numlines=0, missioncount=0;
+  int numlines=0;
   std::string line;
   if(file.is_open());
   else
@@ -86,7 +86,7 @@ if(debug)std::cout << "parsefileopen=" << file.is_open() << " pasefileloc=" << f
 int Parser::getnumdelcount()
 {
 
-  int numvars=0, missioncount=0;
+  int numvars=0;
   std::string line;
   if(file.is_open());
   else
@@ -139,7 +139,7 @@ bool Parser::getfileopen()
 }
 bool Parser::setFileLocation(char *fileloc)
 {
- 
+
   if(fileloc!=NULL)
   {
     int fileloclength=0;
@@ -156,7 +156,7 @@ bool Parser::setFileLocation(char *fileloc)
     }
 
   }
-  return fileOpen; 
+  return fileOpen;
 
 }
 void Parser::dumpfile()
@@ -164,7 +164,7 @@ void Parser::dumpfile()
     if(fileOpen==true)
     {
        char c = file.get();
-       while (file.good()) 
+       while (file.good())
        {
           std::cout << c;
           c = file.get();
@@ -196,7 +196,7 @@ char **Parser::stripunalmemstr(char *inputstr, int *numofvars)
   //gets the number of vars to return and changes the delimiter to NULL
   for(int i=0;i<inputstrlen;i++)
   {
-    if(inputstr[i]==delimiter) 
+    if(inputstr[i]==delimiter)
     {
       ++inputdelnum;
       inputstr[i]='\0';
@@ -229,7 +229,7 @@ char **Parser::stripmemstr(char *inputstr, int *numofvars)
   //gets the number of vars to return and changes the delimiter to NULL
   for(int i=0;i<inputstrlen;i++)
   {
-    if(inputstr[i]==delimiter) 
+    if(inputstr[i]==delimiter)
     {
       ++inputdelnum;
       inputstr[i]='\0';
@@ -237,7 +237,7 @@ char **Parser::stripmemstr(char *inputstr, int *numofvars)
   }
 
   item = new char *[inputdelnum];
-  int copylength=0,itemnum=0;
+  int itemnum=0;
   for(int i=0; i<inputstrlen;i++)
   {
 
@@ -268,15 +268,15 @@ if(debug)  std::cout << "parsefileopen=" << file.is_open() << " pasefileloc=" <<
     {
       char **item;
       std::string tmpitem;
- 
+
       std::getline(file, tmpitem);
-      if(file.eof()) return NULL;      
+      if(file.eof()) return NULL;
       item = new char *[numVars];
       for(int i=0,pos=0,oldpos=0; i<numVars;i++)
       {
-        if(oldpos > tmpitem.length()) 
+        if(oldpos > tmpitem.length())
         {
-    
+
         }else
         {
           pos=tmpitem.find(delimiter, oldpos);
@@ -288,7 +288,7 @@ if(debug)  std::cout << "parsefileopen=" << file.is_open() << " pasefileloc=" <<
           item[i] = new char [1];
           item[i][0]='\0';
           oldpos=-1;
-          
+
         }else if (oldpos==tmpitem.length()+1)
         {
           //std::cout << "( item[i]=NULL;)\n\n";
@@ -304,7 +304,7 @@ if(debug)  std::cout << "parsefileopen=" << file.is_open() << " pasefileloc=" <<
             int length = tmpitem.copy(item[i], pos, oldpos);
             item[i][length]='\0';
             oldpos=tmpitem.length()+1;
-  
+
         }else
         {
         //std::cout << "else\n\n";
@@ -316,7 +316,7 @@ if(debug)  std::cout << "parsefileopen=" << file.is_open() << " pasefileloc=" <<
 
       }
 
-      
+
       return item;
 
 
@@ -437,7 +437,7 @@ struct Misheader *Parser::readvis()
          }
          FirstFileCurrent = FirstFileCurrent->next;
        }
-       if(FirstFileCurrent!=NULL) 
+       if(FirstFileCurrent!=NULL)
        {
           if(debug) std::cout << "FirstFileCurrent!=NULL" << std::endl;
           FirstFileHead->data->next = new Misdata;
@@ -485,7 +485,7 @@ struct Misheader *Parser::readvis()
 
   }
   FirstFileCurrent = FirstFileHead;
-  while(FirstFileCurrent != NULL ) 
+  while(FirstFileCurrent != NULL )
   {
 
 
@@ -509,7 +509,7 @@ struct Misheader *Parser::readvis()
   }
 
   FirstFileCurrent = FirstFileHead;
-  while(FirstFileCurrent != NULL ) 
+  while(FirstFileCurrent != NULL )
   {
 
      int staNum=1;
@@ -526,7 +526,7 @@ struct Misheader *Parser::readvis()
              tmpcursec = tmpcursec->next;
           }
           ++staNum;
-        } 
+        }
         tmpcur = tmpcur->next;
      }
      FirstFileCurrent = FirstFileCurrent->next;
@@ -580,7 +580,7 @@ struct Misheader *Parser::readsch()
          }
          FirstFileCurrent = FirstFileCurrent->next;
        }
-       if(FirstFileCurrent!=NULL) 
+       if(FirstFileCurrent!=NULL)
        {
           if(debug) std::cout << "FirstFileCurrent!=NULL" << std::endl;
           FirstFileHead->data->next = new Misdata;
@@ -628,7 +628,7 @@ struct Misheader *Parser::readsch()
 
   }
   FirstFileCurrent = FirstFileHead;
-  while(FirstFileCurrent != NULL ) 
+  while(FirstFileCurrent != NULL )
   {
 
 
@@ -664,7 +664,7 @@ Misdata *Parser::Misdata_remove(Misheader *head, Misdata *delinput)
      {
         preinput = head->datahead;
         while(preinput->next != delinput && preinput->next != NULL) preinput = preinput->next;
-        
+
      }else
      {
 
@@ -692,7 +692,7 @@ void Parser::MisHeaderCleanup(Misheader *delinput)
 
 
   FirstFileCurrent = delinput;
-  while(FirstFileCurrent != NULL ) 
+  while(FirstFileCurrent != NULL )
   {
 
      Misdata *tmpcur = FirstFileCurrent->datahead;
