@@ -17,7 +17,7 @@ CXX           = g++
 DEFINES       = -DQT_QML_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -g -Wall -W -D_REENTRANT -fPIC $(DEFINES)
 CXXFLAGS      = -pipe -g -std=gnu++11 -Wall -W -D_REENTRANT -fPIC $(DEFINES)
-INCPATH       = -I. -I../../../Qt/5.12.3/gcc_64/include -I../../../Qt/5.12.3/gcc_64/include/QtWidgets -I../../../Qt/5.12.3/gcc_64/include/QtGui -I../../../Qt/5.12.3/gcc_64/include/QtCore -I. -isystem /usr/include/libdrm -I. -I../../../Qt/5.12.3/gcc_64/mkspecs/linux-g++
+INCPATH       = -I./include -I../../../Qt/5.12.3/gcc_64/include -I../../../Qt/5.12.3/gcc_64/include/QtWidgets -I../../../Qt/5.12.3/gcc_64/include/QtGui -I../../../Qt/5.12.3/gcc_64/include/QtCore -I. -isystem /usr/include/libdrm -I. -I../../../Qt/5.12.3/gcc_64/mkspecs/linux-g++
 QMAKE         = /home/Qt/5.12.3/gcc_64/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -40,9 +40,9 @@ DISTNAME      = spsat_file1.0.0
 DISTDIR = /home/NLM/Qt/spsat_file/.tmp/spsat_file1.0.0
 LINK          = g++
 LFLAGS        = -Wl,-rpath,/home/Qt/5.12.3/gcc_64/lib
-LIBS          = $(SUBLIBS) -L/home/Qt/5.12.3/gcc_64/lib -lQt5Widgets -lQt5Gui -lQt5Core -lGL -lpthread   
+LIBS          = $(SUBLIBS) -L/home/Qt/5.12.3/gcc_64/lib -lQt5Widgets -lQt5Gui -lQt5Core -lGL -lpthread
 AR            = ar cqs
-RANLIB        = 
+RANLIB        =
 SED           = sed
 STRIP         = strip
 
@@ -237,14 +237,14 @@ DIST          = ../../../Qt/5.12.3/gcc_64/mkspecs/features/spec_pre.prf \
 		file_parse.cpp \
 		mainwindow.cpp
 QMAKE_TARGET  = spsat_file
-DESTDIR       = 
+DESTDIR       =
 TARGET        = spsat_file
 
 
 first: all
 ####### Build rules
 
-spsat_file: ui_mainwindow.h $(OBJECTS)  
+spsat_file: ui_mainwindow.h $(OBJECTS)
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
 Makefile: spsat_file.pro ../../../Qt/5.12.3/gcc_64/mkspecs/linux-g++/qmake.conf ../../../Qt/5.12.3/gcc_64/mkspecs/features/spec_pre.prf \
@@ -622,13 +622,13 @@ distdir: FORCE
 	$(COPY_FILE) --parents mainwindow.ui $(DISTDIR)/
 
 
-clean: compiler_clean 
+clean: compiler_clean
 	-$(DEL_FILE) $(OBJECTS)
 	-$(DEL_FILE) *~ core *.core
 
 
-distclean: clean 
-	-$(DEL_FILE) $(TARGET) 
+distclean: clean
+	-$(DEL_FILE) $(TARGET)
 	-$(DEL_FILE) .qmake.stash
 	-$(DEL_FILE) Makefile
 
@@ -784,7 +784,7 @@ compiler_yacc_impl_make_all:
 compiler_yacc_impl_clean:
 compiler_lex_make_all:
 compiler_lex_clean:
-compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_uic_clean 
+compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_uic_clean
 
 ####### Compile
 
@@ -1249,7 +1249,7 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		../../../Qt/5.12.3/gcc_64/include/QtWidgets/qmessagebox.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o mainwindow.cpp
 
-moc_mainwindow.o: moc_mainwindow.cpp 
+moc_mainwindow.o: moc_mainwindow.cpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
 
 ####### Install
@@ -1259,4 +1259,3 @@ install:  FORCE
 uninstall:  FORCE
 
 FORCE:
-
