@@ -1,6 +1,6 @@
-#include "mainwindow.h"
+#include "include/mainwindow.h"
 #include "ui_mainwindow.h"
-#include "file_parse.h"
+#include "include/file_parse.h"
 #include <QtGui>
 #include <QApplication>
 #include <QFileDialog>
