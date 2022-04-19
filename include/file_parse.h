@@ -6,7 +6,6 @@
 #include<fstream>
 #include<string.h>
 
-using namespace std;
     struct Misdata
     {
         char
