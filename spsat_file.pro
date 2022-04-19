@@ -11,7 +11,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = spsat_file
 TEMPLATE = app
 
-
+INCLUDEPATH += include
 SOURCES += src/main.cpp\
     src/file_parse.cpp \
         src/mainwindow.cpp
